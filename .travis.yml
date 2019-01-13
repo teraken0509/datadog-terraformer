@@ -13,8 +13,8 @@ install:
   - go mod download
 
 script:
-  - make fmtcheck
-  - make errcheck
+  - test "$TRAVIS_TAG" && make fmtcheck
+  - test "$TRAVIS_TAG" && make errcheck
 
 after_success:
   - test -n "$TRAVIS_TAG" && curl -sL http://git.io/goreleaser | bash
