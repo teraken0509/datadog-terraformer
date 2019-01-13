@@ -13,8 +13,8 @@ import (
 func NewCmdMonitor() *cobra.Command {
 	cmd := &cobra.Command{
 		Use:   "monitor",
-		Short: "Display `monitor`",
-		Long:  "`serve` stores and distributes Docker images.",
+		Short: "Display `monitor` configuration",
+		Long:  "Display `monitor` terraform configuration.",
 		RunE: func(cmd *cobra.Command, args []string) error {
 			if len(args) != 1 {
 				return fmt.Errorf("Invalid arguments: %s", args)
