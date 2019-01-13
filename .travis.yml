@@ -17,4 +17,4 @@ script:
   - make errcheck
 
 after_success:
-  - test -n "$TRAVIS_TAG" && curl -sL http://git.io/goreleaser | VERSION=v0.20.0 bash
+  - test -n "$TRAVIS_TAG" && curl -sL http://git.io/goreleaser | bash
