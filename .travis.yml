@@ -10,9 +10,6 @@ env:
   - GO111MODULE=on
 
 install:
-  - go get -u golang.org/x/tools/cmd/goimports
-  - go get -u github.com/golang/lint/golint
-  - go get -u github.com/goreleaser/goreleaser
   - go mod download
 
 script:
@@ -20,4 +17,4 @@ script:
   - make errcheck
 
 after_success:
-  - test -n "$TRAVIS_TAG" && goreleaser
+  - test -n "$TRAVIS_TAG" && curl -sL http://git.io/goreleaser | VERSION=v0.20.0 bash
