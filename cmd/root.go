@@ -33,7 +33,7 @@ var credential middleware.Credential
 var rootCmd = &cobra.Command{
 	Use:   "datadog-terraformer",
 	Short: "Datadof terraformer command",
-	Long: "Datadof terraformer command",
+	Long:  "Datadof terraformer command",
 	RunE: func(cmd *cobra.Command, args []string) error {
 		if showVersion {
 			internal.PrintVersion()
