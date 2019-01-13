@@ -15,75 +15,67 @@
 package cmd
 
 import (
-	"fmt"
+	"log"
 	"os"
 
-	homedir "github.com/mitchellh/go-homedir"
+	"github.com/kterada0509/datadog-terraformer/internal"
+	middleware "github.com/kterada0509/datadog-terraformer/middleware/datadog"
+
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
 )
 
-var cfgFile string
+var cfgFile, accountName, appKey, apiKey string
+var showVersion bool
+var credential middleware.Credential
 
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
 	Use:   "datadog-terraformer",
-	Short: "A brief description of your application",
-	Long: `A longer description that spans multiple lines and likely contains
-examples and usage of using your application. For example:
-
-Cobra is a CLI library for Go that empowers applications.
-This application is a tool to generate the needed files
-to quickly create a Cobra application.`,
-	// Uncomment the following line if your bare application
-	// has an action associated with it:
-	//	Run: func(cmd *cobra.Command, args []string) { },
+	Short: "Datadof terraformer command",
+	Long:  "Datadof terraformer command",
+	RunE: func(cmd *cobra.Command, args []string) error {
+		if showVersion {
+			internal.PrintVersion()
+			return nil
+		}
+		if err := cmd.Usage(); err != nil {
+			return err
+		}
+		return nil
+	},
 }
 
 // Execute adds all child commands to the root command and sets flags appropriately.
 // This is called by main.main(). It only needs to happen once to the rootCmd.
 func Execute() {
+	rootCmd.SetOutput(os.Stdout)
 	if err := rootCmd.Execute(); err != nil {
-		fmt.Println(err)
+		rootCmd.SetOutput(os.Stderr)
+		rootCmd.Println(err)
 		os.Exit(1)
 	}
 }
 
 func init() {
+	rootCmd.AddCommand(NewCmdVersion())
+	rootCmd.AddCommand(NewCmdMonitor())
 	cobra.OnInitialize(initConfig)
 
-	// Here you will define your flags and configuration settings.
-	// Cobra supports persistent flags, which, if defined here,
-	// will be global for your application.
-	rootCmd.PersistentFlags().StringVar(&cfgFile, "config", "", "config file (default is $HOME/.datadog-terraformer.yaml)")
+	rootCmd.Flags().BoolVarP(&showVersion, "version", "v", false, "show the version and exit")
 
-	// Cobra also supports local flags, which will only run
-	// when this action is called directly.
-	rootCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
+	viper.SetEnvPrefix("datadog")
+	viper.AutomaticEnv()
 }
 
-// initConfig reads in config file and ENV variables if set.
+// initConfig reads ENV variables if set.
 func initConfig() {
-	if cfgFile != "" {
-		// Use config file from the flag.
-		viper.SetConfigFile(cfgFile)
-	} else {
-		// Find home directory.
-		home, err := homedir.Dir()
-		if err != nil {
-			fmt.Println(err)
-			os.Exit(1)
-		}
-
-		// Search config in home directory with name ".datadog-terraformer" (without extension).
-		viper.AddConfigPath(home)
-		viper.SetConfigName(".datadog-terraformer")
+	appKey = viper.GetString("APP_KEY")
+	apiKey = viper.GetString("api_key")
+	creds, err := middleware.NewCredential(apiKey, appKey)
+	if err != nil {
+		log.Println(err)
+		os.Exit(1)
 	}
-
-	viper.AutomaticEnv() // read in environment variables that match
-
-	// If a config file is found, read it in.
-	if err := viper.ReadInConfig(); err == nil {
-		fmt.Println("Using config file:", viper.ConfigFileUsed())
-	}
+	credential = *creds
 }

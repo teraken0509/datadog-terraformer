@@ -1,0 +1,20 @@
+dist: trusty
+sudo: required
+services:
+- docker
+language: go
+go:
+- 1.11.1
+
+install:
+  - go get -u golang.org/x/vgo
+  - go get -u golang.org/x/tools/cmd/goimports
+  - go get -u github.com/golang/lint/golint
+  - go get -u github.com/goreleaser/goreleaser
+
+script:
+  - make fmtcheck
+  - make errcheck
+
+after_success:
+  - test -n "$TRAVIS_TAG" && goreleaser
