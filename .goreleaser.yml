@@ -1,0 +1,35 @@
+# Build customization
+builds:
+  - binary: datadog-terraformer
+    goos:
+      - windows
+      - darwin
+      - linux
+    goarch:
+      - amd64
+    ldflags:
+     - -s -w -X internal.version={{.Version}}
+
+# Archive customization
+archive:
+  format: zip
+  name_template: "{{ .ProjectName }}_{{ .Os }}_{{ .Arch }}"
+  format_overrides:
+    - goos: windows
+      format: zip
+
+# Release customization
+release:
+  github:
+    owner: kterada0509
+    name: datadog-terraformer
+
+brew:
+  github:
+    owner: kterada0509
+    name: homebrew-datadog-terraformer
+
+  homepage: "https://github.com/kterada0509/datadog-terraformer"
+
+  install: |
+    bin.install "datadog-terraformer"
