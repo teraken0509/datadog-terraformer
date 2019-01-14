@@ -23,7 +23,7 @@ func (c *Credential) GetMonitor(id int) (*datadog.Monitor, error) {
 }
 
 func PrintMonitorConfiguration(monitor *datadog.Monitor) error {
-	tmpl := template.Must(template.New("monitor.tmpl").Funcs(internal.TemplateFuncs).ParseFiles("middleware/datadog/templates/monitor.tmpl"))
+	tmpl := template.Must(template.New("monitor.tmpl").Funcs(internal.TemplateFuncs).ParseFiles("templates/datadog/monitor.tmpl"))
 
 	if err := tmpl.Execute(os.Stdout, *monitor); err != nil {
 		return err
