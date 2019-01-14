@@ -6,11 +6,8 @@ language: go
 go:
 - 1.11.1
 
-env:
-  - GO111MODULE=on
-
 install:
-  - go mod download
+  - make setup
 
 script:
   - test "$TRAVIS_TAG" && make fmtcheck

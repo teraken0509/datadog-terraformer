@@ -5,7 +5,14 @@ BUILDDATE?=$$(date '+%Y/%m/%d %H:%M:%S %Z')
 HASH?=$$(git rev-parse --verify HEAD)
 GOVERSION?=$$(go version)
 
+export GO111MODULE := on
+
 default: fmt
+
+# Install all the build and lint dependencies
+setup:
+	go mod download
+.PHONY: setup
 
 fmt:
 	@echo "==> Fixing source code with gofmt..."
