@@ -1,3 +1,7 @@
+before:
+  hooks:
+  - go mod download
+
 # Build customization
 builds:
   - binary: datadog-terraformer
@@ -13,7 +17,7 @@ builds:
 # Archive customization
 archive:
   format: zip
-  name_template: "{{ .ProjectName }}_{{ .Os }}_{{ .Arch }}"
+  name_template: "{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}"
   format_overrides:
     - goos: windows
       format: zip
