@@ -10,8 +10,8 @@ install:
   - make setup
 
 script:
-  - test "$TRAVIS_TAG" && make fmtcheck
-  - test "$TRAVIS_TAG" && make errcheck
+  - test -z "$TRAVIS_TAG" && make fmtcheck
+  - test -z "$TRAVIS_TAG" && make errcheck
 
 # calls goreleaser
 deploy:
