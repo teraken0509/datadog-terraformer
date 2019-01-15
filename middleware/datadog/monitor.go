@@ -22,6 +22,7 @@ func (c *Credential) GetMonitor(id int) (*datadog.Monitor, error) {
 	return monitor, err
 }
 
+// PrintMonitorConfiguration ...
 func PrintMonitorConfiguration(monitor *datadog.Monitor) error {
 	tmpl := template.Must(template.New("monitorTemplate").Funcs(internal.TemplateFuncs).Parse(monitorTemplate))
 
