@@ -1,6 +1,29 @@
 # datadog-terraformer
 Export existing Datadog resources to HCL
 
-# License
+## Usage
+
+### Export Monitor Configuration
+    ```e.g.
+    $ datadog-terraformer monitor [monitorID]
+    ```
+
+    ```output
+    resource "datadog_monitor" "monitor_[monitorID]" {
+        name               = "sample monitor"
+        type               = "query alert"
+        message            = "sample message"
+
+        query = "sample query"
+
+        ...
+
+        tags = [
+            "sample",
+        ]
+    }
+    ```
+
+## License
 
 Datadog Terraformer is released under the Apache 2.0 license. See [LICENSE.txt](https://github.com/kterada0509/datadog-terraformer/blob/master/LICENSE)
