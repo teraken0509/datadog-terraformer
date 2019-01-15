@@ -13,7 +13,7 @@ func NewCmdVersion() *cobra.Command {
 		Short: "print command line tool version",
 		Long:  "print command line tool version",
 		Run: func(cmd *cobra.Command, args []string) {
-			internal.PrintVersion()
+			cmd.Println(internal.PrintVersion())
 		},
 	}
 

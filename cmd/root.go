@@ -36,7 +36,7 @@ var rootCmd = &cobra.Command{
 	Long:  "Datadof terraformer command",
 	RunE: func(cmd *cobra.Command, args []string) error {
 		if showVersion {
-			internal.PrintVersion()
+			cmd.Println(internal.PrintVersion())
 			return nil
 		}
 		if err := cmd.Usage(); err != nil {
