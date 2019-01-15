@@ -4,25 +4,26 @@ Export existing Datadog resources to HCL
 ## Usage
 
 ### Export Monitor Configuration
-    ```e.g.
-    $ datadog-terraformer monitor [monitorID]
-    ```
+```e.g.
+$ datadog-terraformer monitor [monitorID]
+```
 
-    ```output
-    resource "datadog_monitor" "monitor_[monitorID]" {
-        name               = "sample monitor"
-        type               = "query alert"
-        message            = "sample message"
 
-        query = "sample query"
+```output
+resource "datadog_monitor" "monitor_[monitorID]" {
+    name               = "sample monitor"
+    type               = "query alert"
+    message            = "sample message"
 
-        ...
+    query = "sample query"
 
-        tags = [
-            "sample",
-        ]
-    }
-    ```
+    ...
+
+    tags = [
+        "sample",
+    ]
+}
+```
 
 ## License
 
