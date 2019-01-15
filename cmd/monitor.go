@@ -1,6 +1,7 @@
 package cmd
 
 import (
+	"errors"
 	"fmt"
 	"strconv"
 
@@ -15,14 +16,18 @@ func NewCmdMonitor() *cobra.Command {
 		Use:   "monitor",
 		Short: "Display `monitor` configuration",
 		Long:  "Display `monitor` terraform configuration.",
-		RunE: func(cmd *cobra.Command, args []string) error {
+		Args: func(cmd *cobra.Command, args []string) error {
 			if len(args) != 1 {
-				return fmt.Errorf("Invalid arguments: %s", args)
+				return errors.New("requires one arg")
 			}
-			monitorID, err := strconv.Atoi(args[0])
-			if err != nil {
-				return fmt.Errorf("Invalid argument: %s", args[0])
+			if _, err := strconv.Atoi(args[0]); err != nil {
+				return fmt.Errorf("Invalid argument expect int but got %s", args[0])
 			}
+
+			return nil
+		},
+		RunE: func(cmd *cobra.Command, args []string) error {
+			monitorID, _ := strconv.Atoi(args[0])
 			monitor, err := credential.GetMonitor(monitorID)
 			if err != nil {
 				return err
