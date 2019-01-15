@@ -17,7 +17,7 @@ builds:
       - arm
       - arm64
     ldflags:
-      - -s -w -X internal.version={{.Tag}} -X internal.date={{.Date}}
+      - -s -w -X github.com/kterada0509/datadog-terraformer/internal.version={{.Tag}} -X github.com/kterada0509/datadog-terraformer/internal.date={{.Date}}
 
 # Archive customization
 archive:
