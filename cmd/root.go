@@ -15,8 +15,11 @@
 package cmd
 
 import (
+	"errors"
+	"fmt"
 	"log"
 	"os"
+	"strconv"
 
 	"github.com/kterada0509/datadog-terraformer/internal"
 	middleware "github.com/kterada0509/datadog-terraformer/middleware/datadog"
@@ -77,4 +80,15 @@ func initConfig() {
 		os.Exit(1)
 	}
 	credential = *creds
+}
+
+func validationArgs(cmd *cobra.Command, args []string) error {
+	if len(args) != 1 {
+		return errors.New("requires one arg")
+	}
+	if _, err := strconv.Atoi(args[0]); err != nil {
+		return fmt.Errorf("Invalid argument expect int but got %s", args[0])
+	}
+
+	return nil
 }
