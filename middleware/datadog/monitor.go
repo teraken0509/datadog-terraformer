@@ -45,19 +45,19 @@ resource "datadog_monitor" "monitor_{{ .Id }}" {
 	{{ if .Options.Thresholds }}
 	thresholds {
 	  {{ if .Options.Thresholds.Ok }}
-	  ok                = {{ .Options.ThresholdCount.Ok }}
+	  ok                = {{ .Options.Thresholds.Ok }}
 	  {{ end }}
 	  {{ if .Options.Thresholds.Warning }}
-	  warning           = {{ .Options.ThresholdCount.Warning }}
+	  warning           = {{ .Options.Thresholds.Warning }}
 	  {{ end }}
 	  {{ if .Options.Thresholds.WarningRecovery }}
-	  warning_recovery  = {{ .Options.ThresholdCount.WarningRecovery }}
+	  warning_recovery  = {{ .Options.Thresholds.WarningRecovery }}
 	  {{ end }}
 	  {{ if .Options.Thresholds.Critical }}
-	  critical          = {{ .Options.ThresholdCount.Critical }}
+	  critical          = {{ .Options.Thresholds.Critical }}
 	  {{ end }}
 	  {{ if .Options.Thresholds.CriticalRecovery }}
-	  critical_recovery = {{ .Options.ThresholdCount.CriticalRecovery }}
+	  critical_recovery = {{ .Options.Thresholds.CriticalRecovery }}
 	  {{ end }}
 	}
 	{{ end }}
