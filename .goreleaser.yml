@@ -34,12 +34,12 @@ release:
     owner: kterada0509
     name: datadog-terraformer
 
-brew:
-  github:
-    owner: kterada0509
-    name: homebrew-datadog-terraformer
-
-  homepage: "https://github.com/kterada0509/datadog-terraformer"
-
-  install: |
-    bin.install "datadog-terraformer"
+#brew:
+#  github:
+#    owner: kterada0509
+#    name: homebrew-datadog-terraformer
+#
+#  homepage: "https://github.com/kterada0509/datadog-terraformer"
+#
+#  install: |
+#    bin.install "datadog-terraformer"
