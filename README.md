@@ -16,7 +16,7 @@ e.g.
 
 - output
     ```output
-    resource "datadog_monitor" "monitor_[monitorID]" {
+    resource "datadog_monitor" "monitor_123456789" {
         name               = "sample monitor"
         type               = "query alert"
         message            = "sample message"
