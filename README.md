@@ -31,6 +31,51 @@ e.g.
     }
     ```
 
+### Export Timeboard Configuration
+```
+datadog-terraformer timeboard [dashboard id]
+```
+
+e.g.
+- command
+    ```
+    $ datadog-terraformer timeboard 123456789
+    ```
+
+- output
+    ``` output
+    resource "datadog_timeboard" "timeboard_123456789" {
+        title       = "Sample Dashboard"
+        description = "sample dashboard"
+        read_only   = true
+
+
+        graph {
+            title = "Sample Graph"
+            viz   = "timeseries"
+            request {
+                q    = "query1"
+                type = "line"
+
+            }
+            request {
+                q    = "query2"
+                type = "line"
+
+            }
+            request {
+                q    = "query3"
+                type = "line"
+
+            }
+
+        }
+
+        ...
+
+    }
+    ```
+
 ## License
 
 Datadog Terraformer is released under the Apache 2.0 license. See [LICENSE.txt](https://github.com/kterada0509/datadog-terraformer/blob/master/LICENSE)
