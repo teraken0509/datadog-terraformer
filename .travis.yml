@@ -4,17 +4,17 @@ services:
 - docker
 language: go
 go:
-- 1.11.1
-
-env:
-- GO111MODULE=on
+  - "1.12.x"
+env: GOFLAGS=-mod=vendor
 
 install:
-  - make setup
+  - make tools
 
 script:
-  - if test -z "$TRAVIS_TAG"; then make fmtcheck; fi
-  - if test -z "$TRAVIS_TAG"; then make errcheck; fi
+  - if [ -z "$TRAVIS_TAG" ] && [ "$TRAVIS_PULL_REQUEST" != "false" ]; then make lint; fi
+  - if [ -z "$TRAVIS_TAG" ] && [ "$TRAVIS_PULL_REQUEST" != "false" ]; then make test; fi
+  - if [ "$TRAVIS_BRANCH" = "master"] && [ "$TRAVIS_PULL_REQUEST" = "false" ]; then make lint; fi
+  - if [ "$TRAVIS_BRANCH" = "master"] && [ "$TRAVIS_PULL_REQUEST" = "false" ]; then make test; fi
 
 # calls goreleaser
 deploy:

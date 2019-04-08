@@ -7,12 +7,13 @@ GOVERSION?=$$(go version)
 
 export GO111MODULE := on
 
-default: fmt
+default: build
 
-# Install all the build and lint dependencies
-setup:
-	go mod download
-.PHONY: setup
+build: fmtcheck
+	go install
+
+test: fmtcheck
+	go test $(TEST) -timeout=30s -parallel=4
 
 fmt:
 	@echo "==> Fixing source code with gofmt..."
@@ -22,8 +23,12 @@ fmt:
 fmtcheck:
 	@sh -c "'$(CURDIR)/scripts/gofmtcheck.sh'"
 
-errcheck:
-	@sh -c "'$(CURDIR)/scripts/errcheck.sh'"
+lint:
+	@echo "==> Checking source code against linters..."
+	@GOGC=30 golangci-lint run ./
 
-vendor-status:
-	@govendor status
+tools:
+	GO111MODULE=on go install github.com/client9/misspell/cmd/misspell
+	GO111MODULE=on go install github.com/golangci/golangci-lint/cmd/golangci-lint
+
+.PHONY: build fmt fmtcheck lint tools
