@@ -1,6 +1,8 @@
 # datadog-terraformer
 Export existing Datadog resources to HCL
 
+[![Build Status](https://travis-ci.org/kterada0509/datadog-terraformer.svg?branch=master)](https://travis-ci.org/kterada0509/datadog-terraformer)
+
 ## Installing the CLI
 
 ### MacOS X with Homebrew
