@@ -1,11 +1,14 @@
-dist: trusty
+dist: xenial
 sudo: required
 services:
-- docker
+  - docker
 language: go
 go:
   - "1.12.x"
 env: GOFLAGS=-mod=vendor
+
+git:
+  depth: 1
 
 install:
   - make tools
@@ -15,6 +18,10 @@ script:
   - if [ -z "$TRAVIS_TAG" ] && [ "$TRAVIS_PULL_REQUEST" != "false" ]; then make test; fi
   - if [ "$TRAVIS_BRANCH" = "master"] && [ "$TRAVIS_PULL_REQUEST" = "false" ]; then make lint; fi
   - if [ "$TRAVIS_BRANCH" = "master"] && [ "$TRAVIS_PULL_REQUEST" = "false" ]; then make test; fi
+
+branches:
+  only:
+    - master
 
 # calls goreleaser
 deploy:
