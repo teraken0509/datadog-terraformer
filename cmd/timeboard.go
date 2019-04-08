@@ -5,6 +5,7 @@ import (
 
 	"github.com/spf13/cobra"
 
+	"github.com/kterada0509/datadog-terraformer/internal/validations"
 	middleware "github.com/kterada0509/datadog-terraformer/middleware/datadog"
 )
 
@@ -14,7 +15,7 @@ func NewCmdTimeboard() *cobra.Command {
 		Use:   "timeboard",
 		Short: "Display `timeboard` configuration",
 		Long:  "Display `timeboard` terraform configuration.",
-		Args:  validationArgs,
+		Args:  validations.ValidationIntArg,
 		RunE: func(cmd *cobra.Command, args []string) error {
 			boardID, _ := strconv.Atoi(args[0])
 			board, err := credential.GetTimeboard(boardID)
