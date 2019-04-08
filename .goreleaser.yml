@@ -21,7 +21,7 @@ builds:
 
 # Archive customization
 archive:
-  format: zip
+  format: tar.gz
   name_template: "{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}"
   wrap_in_directory: true
   format_overrides:
@@ -34,12 +34,21 @@ release:
     owner: kterada0509
     name: datadog-terraformer
 
-#brew:
-#  github:
-#    owner: kterada0509
-#    name: homebrew-datadog-terraformer
-#
-#  homepage: "https://github.com/kterada0509/datadog-terraformer"
-#
-#  install: |
-#    bin.install "datadog-terraformer"
+brew:
+  github:
+    owner: kterada0509
+    name: homebrew-tap
+
+  url_template: "https://github.com/kterada0509/datadog-terraformer/releases/download/{{ .Tag }}/datadog-terraformer_{{ .Version }}_darwin_amd64.tar.gz"
+
+  homepage: "https://github.com/kterada0509/datadog-terraformer"
+
+  description: Command Line Tool for exporting existing Datadog resources to HCL
+
+  skip_upload: false
+
+  test: |
+    system "#{bin}/datadog-terraformer --version"
+
+  install: |
+    bin.install "datadog-terraformer"

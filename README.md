@@ -1,6 +1,18 @@
 # datadog-terraformer
 Export existing Datadog resources to HCL
 
+## Installing the CLI
+
+### MacOS X with Homebrew
+
+```
+brew install kterada0509/tap/datadog-terraformer
+```
+
+### Download Packages
+
+Download from [releases page](https://github.com/kterada0509/datadog-terraformer/releases).
+
 ## Usage
 
 ### Export Monitor Configuration
@@ -78,4 +90,4 @@ e.g.
 
 ## License
 
-Datadog Terraformer is released under the Apache 2.0 license. See [LICENSE.txt](https://github.com/kterada0509/datadog-terraformer/blob/master/LICENSE)
+Datadog Terraformer is released under the Apache 2.0 license. See [LICENSE.txt](./LICENSE)
