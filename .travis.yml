@@ -21,8 +21,8 @@ install:
 script:
   - if [ -z "$TRAVIS_TAG" ] && [ "$TRAVIS_PULL_REQUEST" != "false" ]; then make lint; fi
   - if [ -z "$TRAVIS_TAG" ] && [ "$TRAVIS_PULL_REQUEST" != "false" ]; then make test; fi
-  - if [ "$TRAVIS_BRANCH" = "master"] && [ "$TRAVIS_PULL_REQUEST" = "false" ]; then make lint; fi
-  - if [ "$TRAVIS_BRANCH" = "master"] && [ "$TRAVIS_PULL_REQUEST" = "false" ]; then make test; fi
+  - if [ "$TRAVIS_BRANCH" == "master" ] && [ "$TRAVIS_PULL_REQUEST" = "false" ]; then make lint; fi
+  - if [ "$TRAVIS_BRANCH" == "master" ] && [ "$TRAVIS_PULL_REQUEST" = "false" ]; then make test; fi
 
 branches:
   only:
