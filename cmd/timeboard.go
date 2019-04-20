@@ -13,8 +13,8 @@ import (
 func NewCmdTimeboard() *cobra.Command {
 	cmd := &cobra.Command{
 		Use:   "timeboard",
-		Short: "Display `timeboard` configuration",
-		Long:  "Display `timeboard` terraform configuration.",
+		Short: "Display 'datadog_timeboard' resource configuration",
+		Long:  `Display 'datadog_timeboard' resource terraform configuration.`,
 		Args:  validations.ValidationIntArg,
 		RunE: func(cmd *cobra.Command, args []string) error {
 			boardID, _ := strconv.Atoi(args[0])

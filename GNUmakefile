@@ -17,7 +17,7 @@ test: fmtcheck
 
 fmt:
 	@echo "==> Fixing source code with gofmt..."
-	gofmt -s -w ./
+	gofmt -s -w $(GOFMT_FILES)
 
 # Currently required by tf-deploy compile
 fmtcheck:

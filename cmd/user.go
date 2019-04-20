@@ -11,8 +11,8 @@ import (
 func NewCmdUser() *cobra.Command {
 	cmd := &cobra.Command{
 		Use:   "user",
-		Short: "Display `user` configuration",
-		Long:  "Display `user` terraform configuration.",
+		Short: "Display 'datadog_user' resource configuration",
+		Long:  `Display 'datadog_user' resource terraform configuration.`,
 		Args:  validations.ValidationEmailArg,
 		RunE: func(cmd *cobra.Command, args []string) error {
 			user, err := credential.GetUser(args[0])

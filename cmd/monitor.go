@@ -13,8 +13,8 @@ import (
 func NewCmdMonitor() *cobra.Command {
 	cmd := &cobra.Command{
 		Use:   "monitor",
-		Short: "Display `monitor` configuration",
-		Long:  "Display `monitor` terraform configuration.",
+		Short: "Display 'datadog_monitor' resource configuration",
+		Long:  `Display 'datadog_monitor' resource terraform configuration.`,
 		Args:  validations.ValidationIntArg,
 		RunE: func(cmd *cobra.Command, args []string) error {
 			monitorID, _ := strconv.Atoi(args[0])
