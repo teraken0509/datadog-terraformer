@@ -17,7 +17,9 @@ Download from [releases page](https://github.com/kterada0509/datadog-terraformer
 
 ## Usage
 
-### Export Monitor Configuration
+<details>
+<summary>Export Monitor Configuration</summary>
+
 ```
 datadog-terraformer monitor [monitorID]
 ```
@@ -44,8 +46,11 @@ e.g.
         ]
     }
     ```
+</details>
 
-### Export Timeboard Configuration
+<details>
+<summary>Export Timeboard Configuration</summary>
+
 ```
 datadog-terraformer timeboard [dashboard id]
 ```
@@ -89,6 +94,33 @@ e.g.
 
     }
     ```
+</details>
+
+<details>
+<summary>Export User Configuration</summary>
+
+```
+datadog-terraformer user [dashboard user handler]
+```
+
+e.g.
+- command
+    ```
+    $ datadog-terraformer user test@example.co.jp
+    ```
+
+- output
+    ``` output
+    resource "datadog_user" "user_handle" {
+        disabled = false
+        email  = "test@example.co.jp"
+        handle = "test@example.co.jp"
+        name   = "Test user"
+        //Deprecated
+        is_admin = false
+    }
+    ```
+</details>
 
 ## License
 
