@@ -1,9 +1,16 @@
 package middleware
 
 import (
+	"bytes"
 	"errors"
+	"io"
 
 	datadog "github.com/zorkian/go-datadog-api"
+)
+
+var (
+	writer io.Writer
+	buffer *bytes.Buffer
 )
 
 // Credential ...

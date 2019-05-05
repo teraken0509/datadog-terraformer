@@ -1,6 +1,7 @@
 package cmd
 
 import (
+	"os"
 	"strconv"
 
 	"github.com/spf13/cobra"
@@ -22,7 +23,7 @@ func NewCmdTimeboard() *cobra.Command {
 			if err != nil {
 				return err
 			}
-			if err = middleware.PrintTimeBoardConfiguration(board); err != nil {
+			if err = middleware.PrintTimeBoardConfiguration(os.Stdout, board); err != nil {
 				return err
 			}
 			return nil

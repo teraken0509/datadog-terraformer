@@ -1,7 +1,7 @@
 package middleware
 
 import (
-	"os"
+	"io"
 	"text/template"
 
 	"github.com/kterada0509/datadog-terraformer/internal"
@@ -23,10 +23,10 @@ func (c *Credential) GetUser(id string) (*datadog.User, error) {
 }
 
 // PrintUserConfiguration ...
-func PrintUserConfiguration(user *datadog.User) error {
+func PrintUserConfiguration(w io.Writer, user *datadog.User) error {
 	tmpl := template.Must(template.New("userTemplate").Funcs(internal.TemplateFuncs).Parse(userTemplate))
 
-	if err := tmpl.Execute(os.Stdout, *user); err != nil {
+	if err := tmpl.Execute(w, *user); err != nil {
 		return err
 	}
 	return nil
