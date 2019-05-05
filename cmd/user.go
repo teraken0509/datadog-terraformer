@@ -1,6 +1,8 @@
 package cmd
 
 import (
+	"os"
+
 	"github.com/spf13/cobra"
 
 	"github.com/kterada0509/datadog-terraformer/internal/validations"
@@ -19,7 +21,7 @@ func NewCmdUser() *cobra.Command {
 			if err != nil {
 				return err
 			}
-			if err = middleware.PrintUserConfiguration(user); err != nil {
+			if err = middleware.PrintUserConfiguration(os.Stdout, user); err != nil {
 				return err
 			}
 			return nil

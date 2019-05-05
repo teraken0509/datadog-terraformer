@@ -1,7 +1,7 @@
 package middleware
 
 import (
-	"os"
+	"io"
 	"text/template"
 
 	"github.com/kterada0509/datadog-terraformer/internal"
@@ -23,10 +23,10 @@ func (c *Credential) GetMonitor(id int) (*datadog.Monitor, error) {
 }
 
 // PrintMonitorConfiguration ...
-func PrintMonitorConfiguration(monitor *datadog.Monitor) error {
+func PrintMonitorConfiguration(w io.Writer, monitor *datadog.Monitor) error {
 	tmpl := template.Must(template.New("monitorTemplate").Funcs(internal.TemplateFuncs).Parse(monitorTemplate))
 
-	if err := tmpl.Execute(os.Stdout, *monitor); err != nil {
+	if err := tmpl.Execute(w, *monitor); err != nil {
 		return err
 	}
 	return nil

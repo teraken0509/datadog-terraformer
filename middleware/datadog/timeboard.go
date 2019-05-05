@@ -1,7 +1,7 @@
 package middleware
 
 import (
-	"os"
+	"io"
 	"text/template"
 
 	"github.com/kterada0509/datadog-terraformer/internal"
@@ -18,10 +18,10 @@ func (c *Credential) GetTimeboard(id int) (*datadog.Dashboard, error) {
 }
 
 // PrintTimeBoardConfiguration ...
-func PrintTimeBoardConfiguration(board *datadog.Dashboard) error {
+func PrintTimeBoardConfiguration(w io.Writer, board *datadog.Dashboard) error {
 	tmpl := template.Must(template.New("timeboardTemplate").Funcs(internal.TemplateFuncs).Parse(timeboardTemplate))
 
-	if err := tmpl.Execute(os.Stdout, *board); err != nil {
+	if err := tmpl.Execute(w, *board); err != nil {
 		return err
 	}
 	return nil

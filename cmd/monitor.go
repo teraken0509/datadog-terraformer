@@ -1,6 +1,7 @@
 package cmd
 
 import (
+	"os"
 	"strconv"
 
 	"github.com/spf13/cobra"
@@ -22,7 +23,7 @@ func NewCmdMonitor() *cobra.Command {
 			if err != nil {
 				return err
 			}
-			if err = middleware.PrintMonitorConfiguration(monitor); err != nil {
+			if err = middleware.PrintMonitorConfiguration(os.Stdout, monitor); err != nil {
 				return err
 			}
 			return nil
