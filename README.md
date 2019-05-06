@@ -15,6 +15,18 @@ brew install kterada0509/tap/datadog-terraformer
 
 Download from [releases page](https://github.com/kterada0509/datadog-terraformer/releases).
 
+## Supported Resources
+
+* [x] [datadog_monitor](https://www.terraform.io/docs/providers/datadog/r/monitor.html)
+* [ ] [datadog_integration_aws](https://www.terraform.io/docs/providers/datadog/r/integration_aws.html)
+* [ ] [datadog_integration_gcp](https://www.terraform.io/docs/providers/datadog/r/integration_gcp.html)
+* [ ] [datadog_metric_metadata](https://www.terraform.io/docs/providers/datadog/r/metric_metadata.html)
+* [ ] [datadog_screenboard](https://www.terraform.io/docs/providers/datadog/r/screenboard.html)
+* [ ] [datadog_synthetics_test](https://www.terraform.io/docs/providers/datadog/r/synthetics.html)
+* [x] [datadog_timeboard](https://www.terraform.io/docs/providers/datadog/r/timeboard.html)
+* [x] [datadog_user](https://www.terraform.io/docs/providers/datadog/r/user.html)
+* [x] [datadog_downtime](https://www.terraform.io/docs/providers/datadog/r/downtime.html)
+
 ## Usage
 
 <details>
