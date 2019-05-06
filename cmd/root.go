@@ -61,6 +61,7 @@ func init() {
 	rootCmd.AddCommand(NewCmdMonitor())
 	rootCmd.AddCommand(NewCmdTimeboard())
 	rootCmd.AddCommand(NewCmdUser())
+	rootCmd.AddCommand(NewCmdDowntime())
 	cobra.OnInitialize(initConfig)
 
 	rootCmd.Flags().BoolVarP(&showVersion, "version", "v", false, "show the version and exit")
