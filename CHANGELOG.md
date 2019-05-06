@@ -12,6 +12,18 @@
 
 -->
 
+# v0.0.8
+
+## NEW FEATURES:
+- Add user subcommand for export `datadog_downtime` resource configuration.
+
+## BUG FIXES
+
+## IMPROVEMENTS
+- Update README
+- Add test for middleware
+- Add Pull Request Template
+
 # v0.0.7
 
 ## NEW FEATURES:
