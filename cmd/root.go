@@ -32,8 +32,8 @@ var credential middleware.Credential
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
 	Use:   "datadog-terraformer",
-	Short: "Datadof terraformer command",
-	Long:  "Datadof terraformer command",
+	Short: "Datadog terraformer command",
+	Long:  "Datadog terraformer command, export terraform configuration from existing resource.",
 	RunE: func(cmd *cobra.Command, args []string) error {
 		if showVersion {
 			cmd.Println(internal.PrintVersion())
