@@ -79,7 +79,7 @@ func Test_PrintMonitorConfiguration(t *testing.T) {
 					"bbbb",
 				},
 			},
-			expected: "\n# Monitor Configuration for 10001\nresource \"datadog_monitor\" \"monitor_10001\" {\n\tname               = \"Test Monitor 3\"\n\ttype               = \"query_alert\"\n\tmessage            = \"test message 3\"\n  \n\tquery = \"test query 3\"\n\tthreshold_windows {\n\t\trecovery_window\t= last_15m\n\t\ttrigger_window\t= last_15m\n\t}\n\n\tnotify_no_data    = false\n\tnotify_audit = false\n\tinclude_tags = false\n\trequire_full_window = false\n\tlocked = false\n  \n\ttags = [\n\t  \"test\",\n\t  \"bbbb\",\n\t]\n}\n",
+			expected: "\n# Monitor Configuration for 10001\nresource \"datadog_monitor\" \"monitor_10001\" {\n\tname               = \"Test Monitor 3\"\n\ttype               = \"query_alert\"\n\tmessage            = \"test message 3\"\n  \n\tquery = \"test query 3\"\n\tthreshold_windows {\n\t\trecovery_window\t= \"last_15m\"\n\t\ttrigger_window\t= \"last_15m\"\n\t}\n\n\tnotify_no_data    = false\n\tnotify_audit = false\n\tinclude_tags = false\n\trequire_full_window = false\n\tlocked = false\n  \n\ttags = [\n\t  \"test\",\n\t  \"bbbb\",\n\t]\n}\n",
 		},
 	}
 
