@@ -13,7 +13,7 @@ import (
 // NewCmdDowntime ...
 func NewCmdDowntime() *cobra.Command {
 	cmd := &cobra.Command{
-		Use:   "monitor",
+		Use:   "downtime",
 		Short: "Display 'datadog_downtime' resource configuration",
 		Long:  `Display 'datadog_downtime' resource terraform configuration.`,
 		Args:  validations.ValidationIntArg,
