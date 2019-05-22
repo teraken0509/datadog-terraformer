@@ -63,7 +63,18 @@ resource "datadog_monitor" "monitor_{{ .Id }}" {
 	  {{- end }}
 	}
 	{{- end }}
-  
+
+	{{- if .Options.ThresholdWindows }}
+	threshold_windows {
+		{{- if .Options.ThresholdWindows.RecoveryWindow }}
+		recovery_window	= "{{ .Options.ThresholdWindows.RecoveryWindow }}"
+		{{- end }}
+		{{- if .Options.ThresholdWindows.TriggerWindow }}
+		trigger_window	= "{{ .Options.ThresholdWindows.TriggerWindow }}"
+		{{- end }}
+	}
+	{{- end }}
+
 	notify_no_data    = {{ .Options.NotifyNoData }}
 	{{- if .Options.NewHostDelay }}
 	new_host_delay = {{ .Options.NewHostDelay }}

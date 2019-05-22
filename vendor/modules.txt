@@ -181,7 +181,7 @@ github.com/spf13/jwalterweatherman
 github.com/spf13/pflag
 # github.com/spf13/viper v1.3.1
 github.com/spf13/viper
-# github.com/zorkian/go-datadog-api v2.19.0+incompatible
+# github.com/zorkian/go-datadog-api v2.20.0+incompatible
 github.com/zorkian/go-datadog-api
 # golang.org/x/crypto v0.0.0-20190313024323-a1f597ede03a
 golang.org/x/crypto/ssh/terminal
